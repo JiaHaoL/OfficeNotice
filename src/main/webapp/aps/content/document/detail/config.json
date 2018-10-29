@@ -1,0 +1,9 @@
+{
+    "name": "app_content_document_detail",
+    "viewUrl": "aps/content/document/detail/template.html",
+    "controllerUrl": "aps/content/document/detail/controller.js",
+    "config": 
+    {
+            "findByIdURL": "json/Record_queryForObject_docVisitedRecord.json"
+	}
+}

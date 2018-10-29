@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="document" >
+  <resultMap id="BaseResultMap" type="java.util.HashMap" ></resultMap>
+  <parameterMap id="BaseParameterMap" type="java.util.HashMap" ></parameterMap>
+	
+  <select id="CategoryList" resultMap="BaseResultMap" parameterMap="BaseParameterMap">
+  	SELECT 
+  		distinct DOCAUTHOR
+  	FROM SC_DOCUMENT
+  	WHERE DOCCHANNEL = #{DOCCHANNEL}
+  	AND DOCFLAG = 0 and DELETEFLAG = 0 and DOCAUDITORFLAG = 2
+  </select>
+  
+  <select id="DocumentList" resultMap="BaseResultMap" parameterMap="BaseParameterMap">
+		select 
+			  DOCID,
+			  DOCCONTENT,
+			  DOCHTMLCON,
+			  DOCCODE,
+			  DOCCHANNEL,
+			  SITEID,
+			  DOCVERSION,
+			  DOCTYPE,
+			  DOCTITLE,
+			  DOCSOURCE,
+			  DOCAUTHOR,
+			  DOCSOURCEURL,
+			  DOCSECURITY,
+			  DOCSTATUS,
+			  DOCKIND,
+			  DOCABSTRACT,
+			  DOCKEYWORDS,
+			  DOCRELWORDS,
+			  DOCPUBURL,
+			  DOCNO,
+			  DOCFLAG,
+			  DOCLINK,
+			  ATTACHPIC,
+			  DOCFILENAME,
+			  nvl(writetime, docreltime) docreltime,
+			  DOCFROMVERSION,
+			  DOCSOURCE1,
+			  RSSNAME,
+			  LINK
+		from 
+			SC_DOCUMENT
+		where DOCFLAG = 0 and DELETEFLAG = 0 and DOCAUDITORFLAG = 2
+		<if test="DOCAUTHOR != null and DOCAUTHOR != ''">
+			AND DOCAUTHOR like '%' || #{DOCAUTHOR} || '%'
+		</if>
+		<if test="DOCSOURCE != null and DOCSOURCE != ''">
+			AND  DOCSOURCE like '%' || #{DOCSOURCE} || '%'
+		</if>
+ 		<if test="DOCCHANNEL != null and DOCCHANNEL != ''">
+			AND DOCCHANNEL = #{DOCCHANNEL}
+		</if>
+	 	ORDER BY  doczd desc,nvl(writetime, docreltime) DESC
+  </select>
+  
+  <select id="DocumentListSize" parameterMap="BaseParameterMap" resultType="java.lang.Integer">
+		select
+			count(1)
+		from SC_DOCUMENT
+		where DOCFLAG = 0 and DELETEFLAG = 0 and DOCAUDITORFLAG = 2
+		<if test="DOCAUTHOR != null and DOCAUTHOR != ''">
+			AND DOCAUTHOR like '%' || #{DOCAUTHOR} || '%'
+		</if>
+		<if test="DOCSOURCE != null and DOCSOURCE != ''">
+			AND DOCSOURCE like '%' || #{DOCSOURCE} || '%'
+		</if>
+ 		<if test="DOCCHANNEL != null and DOCCHANNEL != ''">
+			AND DOCCHANNEL = #{DOCCHANNEL}
+		</if>
+ 		
+	</select>
+
+
+	<select id="DocumentFindById" resultMap="BaseResultMap" parameterMap="BaseParameterMap">
+		select 
+		  	  DOCID,
+			  DOCCONTENT,
+			  DOCHTMLCON,
+			  DOCCODE,
+			  DOCCHANNEL,
+			  (select CHNLNAME from SC_CHANNEL where CHANNELID=DOCCHANNEL) DOCCHANNELNAME,
+			  SITEID,
+			  (select SITENAME from SC_SITE c where c.SITEID=sc.SITEID) SITENAME,
+			  DOCVERSION,
+			  DOCTYPE,
+			  DOCTITLE,
+			  LONGTITLE,
+			  DOCSOURCE,
+			  DOCSOURCEURL,
+			  DOCSECURITY,
+			  DOCSTATUS,
+			  DOCKIND,
+			  DOCABSTRACT,
+			  DOCKEYWORDS,
+			  DOCRELWORDS,
+			  DOCPEOPLE,
+			  (select USER_SN from SC_CORE.SC_USER where USER_PK = DOCPEOPLE) DOCPEOPLENAME,
+			  DOCPLACE,
+			  DOCAUTHOR,
+			  DOCEDITOR,
+			  DOCAUDITOR,
+			  DOCOUTUPID,
+			  DOCVALID,
+			  DOCPUBURL,
+			  DOCPUBTIME,
+			  nvl(writetime, docreltime) docreltime,
+			  to_char(WRITETIME,'yyyy-MM-dd HH24:mi')  WRITETIME,
+			  DOCWORDSCOUNT,
+			  DOCPRO,
+			  RIGHTDEFINED,
+			  TITLECOLOR,
+			  TEMPLATEID,
+			  SCHEDULE,
+			  DOCNO,
+			  DOCFLAG,
+			  EDITOR,
+			  ATTRIBUTE,
+			  HITSCOUNT,
+			  SUBDOCTITLE,
+			  ATTACHPIC,
+			  ATTACHPVIDEO,
+			  DOCLINK,
+			  DOCFILENAME,
+			  DOCFROMVERSION,
+			  DOCSOURCE1,
+			  RSSNAME,
+			  LINK,
+			  DOCNP,
+			  DOCNV,
+			  DOCTL,
+			  DOCZD,
+			  DOCAUDITORFLAG
+		from SC_DOCUMENT sc
+		where DOCID = #{DOCID}
+	</select>
+	
+	<!-- 查询文章访问次数 -->
+	<select id="findDocVisitedNum"  parameterMap="BaseParameterMap" resultType="java.lang.Integer">
+		select 
+			count(1)
+		from SC_VISIT_RECORD 
+		where DOCID = #{DOCID}
+	</select>
+	
+	<!-- 添加访问纪录 -->
+	<insert id="VisitRecordInsert" parameterMap="BaseParameterMap">
+		INSERT INTO SC_VISIT_RECORD
+		(
+			VRID,
+			SITEID,
+			CHANNELID,
+			DOCID,
+			USERIP,
+			SESSIONID,
+			VISIT_TIME
+		)
+		VALUES
+		(
+			#{UUID},
+			#{SITEID,jdbcType=VARCHAR},
+			#{CHANNELID, jdbcType=VARCHAR},
+			#{DOCID},
+			#{AccessIp},
+			#{sessionId},
+			sysdate
+		)
+	</insert>
+</mapper>

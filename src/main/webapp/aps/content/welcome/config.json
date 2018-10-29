@@ -1,0 +1,11 @@
+{
+    "name": "app_content",
+    "viewUrl": "aps/content/welcome/template.html",
+    "controllerUrl": "aps/content/welcome/controller.js",
+    "config": 
+    {
+            "findURL": "json/Open_queryForList_DocumentList.json",
+            "findCategotyListURL": "json/Open_queryForList_CategoryList.json",
+            "findChannelListByIdURL" : "json/Open_queryForList_findChannelBySiteId.json"
+	}
+}

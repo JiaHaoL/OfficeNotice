@@ -1,0 +1,29 @@
+<div class="bgpt">
+	<div class="con-main clearfix">
+		<div class="place" style="color#585858;line-height:45px;height: 45px;margin-top: 0px;margin-bottom: 40px;"></div>
+		<div class="right xyxw" style="width: 1200px;">
+			<div class="title">
+				<div class="left">{{docInfo.DOCCHANNELNAME}}</div>
+				<div class="textRight"></div>
+			</div>
+			<div class="panel panel-default" style="border:0px;">
+			 <div class="panel-body" style="border-top:0px;">
+			
+			  <div class="page-header" style="margin-top: 20px;">
+			    <h4 style="text-align: center;">{{docInfo.DOCTITLE}} <br/>
+			    	<small style="line-height: 30px;">发布日期：{{docInfo.DOCRELTIME | date:'yyyy-MM-dd' }}</small>
+			    </h4>
+			  </div>
+			  <!--<div id="container"></div> -->
+			  <div ng-bind-html="docInfo.DOCHTMLCON | trustHtml" class="conImgMax_web" ></div>
+			  
+			  <nav>
+			   <ul style="padding-left: 15px;list-style: none;">
+			     <li class="previous"><a style="border: none;text-decoration: none;line-height:30px;">文章作者：{{docInfo.DOCAUTHOR}}</a></li>
+			     <li class="previous"><a style="border: none;text-decoration: none;line-height:30px;">文章出处：{{docInfo.DOCSOURCE}}</a></li>
+			     <li class="previous"><a style="border: none;text-decoration: none;line-height:30px;">文章浏览次数：{{docInfo.DocVisitedNum}}</a></li>
+			   </ul>
+			 </nav>
+		</div>
+	</div>
+</div>
