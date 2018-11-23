@@ -19,6 +19,21 @@
             		$httpService.post(config.findURL, $scope.form).success(function(data) {
 						if(data.code == "0000") {
 							$scope.dataList =  data.data;
+							
+							for(var i=0; i<$scope.dataList.length; i++){
+								if($scope.dataList[i].DOCAUTHOR == "" || $scope.dataList[i].DOCAUTHOR == undefined || $scope.dataList[i].DOCAUTHOR == " "){
+									$scope.dataList[i].DOCAUTHOR = $scope.form.DOCAUTHOR;
+									if($scope.form.DOCCHANNEL == 2075){
+										$scope.dataList[i].DOCAUTHOR = "区教育督导室";
+									}
+								}
+								if($scope.dataList[i].DOCAUTHOR == "教育督导室" || $scope.dataList[i].DOCAUTHOR == "督导室"){
+									$scope.dataList[i].DOCAUTHOR = "区教育督导室";
+								}
+							}
+							
+							
+							
 							PAGE.buildPage($scope,data);
 							$scope.$apply();
 						}
@@ -46,8 +61,13 @@
             	//top导航
             	$scope.findDocs = function($event) {
             		var nodeVal = $event.currentTarget.childNodes[0].nodeValue;
-            		if(nodeVal == '最新动态') {
+            		$scope.form.DOCAUTHORMORE = null;
+            		$scope.form.DOCAUTHOR = null;
+            		if(nodeVal == '最新通知' || nodeVal == '最新文件') {
             			$scope.form.DOCAUTHOR = null;
+            		}else if(nodeVal== "区教育督导室" || nodeVal== "教育督导室" || nodeVal== "督导室"){
+            			//$scope.form.DOCAUTHORMORE = "'区教育督导室','教育督导室','督导室'";
+            			$scope.form.DOCAUTHOR = "督导室";
             		}else{
             			$scope.form.DOCAUTHOR = nodeVal;
             		}

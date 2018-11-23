@@ -55,6 +55,9 @@
  		<if test="DOCCHANNEL != null and DOCCHANNEL != ''">
 			AND DOCCHANNEL = #{DOCCHANNEL}
 		</if>
+		<if test="DOCAUTHORMORE != null and DOCAUTHORMORE != ''">
+			AND DOCAUTHOR in (#{DOCAUTHORMORE})
+		</if>
 	 	ORDER BY  doczd desc,nvl(writetime, docreltime) DESC
   </select>
   
@@ -72,7 +75,9 @@
  		<if test="DOCCHANNEL != null and DOCCHANNEL != ''">
 			AND DOCCHANNEL = #{DOCCHANNEL}
 		</if>
- 		
+ 		<if test="DOCAUTHORMORE != null and DOCAUTHORMORE != ''">
+			AND DOCAUTHOR in (#{DOCAUTHORMORE})
+		</if>
 	</select>
 
 

@@ -11,11 +11,11 @@
 			<ul style="width: 320px;background: #f2f2f2;">
 				<li><a ng-click="selectDocs('dc0c1dad1e8549ee82eae7580b509e9b', $event)" class="active">教育局通知</a></li>
 				<li><a ng-click="selectDocs('a93b78a6b7274bc8992d76796ce213f9', $event);">区教育学院通知</a></li>
-				<li><a ng-click="selectDocs('2075', $event);">教育督导公报公示</a></li>
+				<li><a ng-click="selectDocs('2075', $event);">教育督导通知</a></li>
 				<li><a ng-click="selectDocs('1028', $event);">考试中心通知</a></li>
 				<li><a ng-click="selectDocs('e95e47eb34184c778f0d53311fdbaa0e', $event);">文件发布</a></li>
 				<li><a ng-click="selectDocs('2b733472e2a64bc9b22cec40fcbc1e13', $event);">教育信息</a></li>
-				<li><a ng-click="selectDocs('5ce1f56e2ef0432d9e6948848e5cb5d0', $event);">上级汇编</a></li>
+				<!-- <li><a ng-click="selectDocs('5ce1f56e2ef0432d9e6948848e5cb5d0', $event);">上级汇编</a></li> -->
 			</ul>
 		</div>
 		<div class="right xyxw">
@@ -24,7 +24,7 @@
 				<div class="textRight"></div>
 			</div>
 			<div class="kind channel_dc0c1dad1e8549ee82eae7580b509e9b" style="display:block;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+				<div ng-click="findDocs($event)" class="active">最新通知</div>
 				<div ng-click="findDocs($event)">党委办</div>
 				<div ng-click="findDocs($event)">宣传办</div>
 				<div ng-click="findDocs($event)">安全办</div>
@@ -35,7 +35,7 @@
 				<div ng-click="findDocs($event)">职成教科</div>
 			</div>
 			<div class="kind channel_a93b78a6b7274bc8992d76796ce213f9" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+				<div ng-click="findDocs($event)" class="active">最新通知</div>
 				<div ng-click="findDocs($event)">干训部</div>
 				<div ng-click="findDocs($event)">研训部</div>
 				<div ng-click="findDocs($event)">信息部</div>
@@ -45,35 +45,35 @@
 				<div ng-click="findDocs($event)">教师教育办公室</div>
 			</div>
 			<div class="kind channel_2075" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+				<div ng-click="findDocs($event)" class="active">最新通知</div>
 				<div ng-click="findDocs($event)">区教育督导室</div>
-				<div ng-click="findDocs($event)">教育督导室</div>
-				<div ng-click="findDocs($event)">督导室</div>
+				<!-- <div ng-click="findDocs($event)">教育督导室</div>
+				<div ng-click="findDocs($event)">督导室</div> -->
 				<div ng-click="findDocs($event)">松江区教育局</div>
 				<div ng-click="findDocs($event)">基教科</div>
 			</div>
 			<div class="kind channel_1028" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+				<div ng-click="findDocs($event)" class="active">最新通知</div>
 				<div ng-click="findDocs($event)">松江区教育考试中心</div>
 			</div>
 			<div class="kind channel_e95e47eb34184c778f0d53311fdbaa0e" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+				<div ng-click="findDocs($event)" class="active">最新文件</div>
 				<div ng-click="findDocs($event)">松江区教育局</div>
 				<div ng-click="findDocs($event)">松江区语委办</div>
 				<div ng-click="findDocs($event)">教育工会</div>
 			</div>
 			<div class="kind channel_2b733472e2a64bc9b22cec40fcbc1e13" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+				<div ng-click="findDocs($event)" class="active">最新通知</div>
 				<div ng-click="findDocs($event)">松江区教育局</div>
-				<div ng-click="findDocs($event)">人事科</div>
+				<!-- <div ng-click="findDocs($event)">人事科</div>
 				<div ng-click="findDocs($event)">基教科</div>
 				<div ng-click="findDocs($event)">团工委</div>
-				<div ng-click="findDocs($event)">教育局计财科</div>
+				<div ng-click="findDocs($event)">教育局计财科</div> -->
 			</div>
-			<div class="kind channel_5ce1f56e2ef0432d9e6948848e5cb5d0" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新动态</div>
+			<!-- <div class="kind channel_5ce1f56e2ef0432d9e6948848e5cb5d0" style="display:none;">
+				<div ng-click="findDocs($event)" class="active">最新通知</div>
 				<div ng-click="findDocs($event)">松江区教育局</div>
-			</div>
+			</div> -->
 			<div class="con-box">
 				<table style="width: 100%;">
 					<tr ng-repeat="doc in dataList" class="tr-b">
