@@ -8,9 +8,9 @@
 		</div>
 		<div class="left tab">
 			<div style="width: 320px;height: 90px;background: url(assets/img/bgpt_bg.png);font-size: 28px;color: #fff;line-height: 90px;text-align: center;">办公通知</div>
-			<ul style="width: 320px;background: #f2f2f2;">
+			<ul style="width: 320px;background: #f2f2f2;text-align: left;padding-left: 100px">
 				<li><a ng-click="selectDocs('dc0c1dad1e8549ee82eae7580b509e9b', $event)" class="active">教育局通知</a></li>
-				<li><a ng-click="selectDocs('a93b78a6b7274bc8992d76796ce213f9', $event);">区教育学院通知</a></li>
+				<li><a ng-click="selectDocs('a93b78a6b7274bc8992d76796ce213f9', $event);">教育学院通知</a></li>
 				<li><a ng-click="selectDocs('2075', $event);">教育督导通知</a></li>
 				<li><a ng-click="selectDocs('1028', $event);">考试中心通知</a></li>
 				<li><a ng-click="selectDocs('e95e47eb34184c778f0d53311fdbaa0e', $event);">文件发布</a></li>
@@ -49,12 +49,17 @@
 				<div ng-click="findDocs($event)">区教育督导室</div>
 				<!-- <div ng-click="findDocs($event)">教育督导室</div>
 				<div ng-click="findDocs($event)">督导室</div> -->
-				<div ng-click="findDocs($event)">松江区教育局</div>
-				<div ng-click="findDocs($event)">基教科</div>
+				<!-- <div ng-click="findDocs($event)">松江区教育局</div>
+				<div ng-click="findDocs($event)">基教科</div> -->
 			</div>
 			<div class="kind channel_1028" style="display:none;">
 				<div ng-click="findDocs($event)" class="active">最新通知</div>
-				<div ng-click="findDocs($event)">松江区教育考试中心</div>
+				<!-- <div ng-click="findDocs($event)">松江区教育考试中心</div> -->
+				<div ng-click="findDocs($event)">中招</div>
+				<div ng-click="findDocs($event)">高招</div>
+				<div ng-click="findDocs($event)">学业水平</div>
+				<div ng-click="findDocs($event)">学籍管理</div>
+				<div ng-click="findDocs($event)">其他</div>
 			</div>
 			<div class="kind channel_e95e47eb34184c778f0d53311fdbaa0e" style="display:none;">
 				<div ng-click="findDocs($event)" class="active">最新文件</div>
@@ -63,7 +68,7 @@
 				<div ng-click="findDocs($event)">教育工会</div>
 			</div>
 			<div class="kind channel_2b733472e2a64bc9b22cec40fcbc1e13" style="display:none;">
-				<div ng-click="findDocs($event)" class="active">最新通知</div>
+				<div ng-click="findDocs($event)" class="active">最新信息</div>
 				<div ng-click="findDocs($event)">松江区教育局</div>
 				<!-- <div ng-click="findDocs($event)">人事科</div>
 				<div ng-click="findDocs($event)">基教科</div>
@@ -80,7 +85,7 @@
 						<td>
 							<div class="hidden-overstep-txt">
 								<!-- <a title="{{doc.DOCTITLE}}" ng-click="docDetail(doc)"><span>[ {{doc.DOCAUTHOR}} ]</span>{{doc.DOCTITLE}}</a>-->
-								<a title="{{doc.DOCTITLE}}" href='/OfficeNotice/detail/{{doc.DOCID}}' target="_blank"><span>[ {{doc.DOCAUTHOR}} ]</span>{{doc.DOCTITLE}}</a>
+								<a title="{{doc.DOCTITLE}}" href='/OfficeNotice/detail/{{doc.DOCID}}' target="_blank"><span class="DOCAUTHOR">[ {{doc.DOCAUTHOR}} ]</span>{{doc.DOCTITLE}}</a>
 							</div>
 						</td>
 						<td class="dateTime">{{doc.DOCRELTIME | date:'yyyy-MM-dd'}}</td>
@@ -92,3 +97,6 @@
 		</div>
 	</div>
 </div>
+
+
+

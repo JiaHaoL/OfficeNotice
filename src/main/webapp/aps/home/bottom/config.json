@@ -1,0 +1,13 @@
+{
+    "name": "app_home_bottom",
+    "viewUrl": "aps/home/bottom/template.html",
+    "controllerUrl": "aps/home/bottom/controller.js",
+    "config": 
+    {
+            "contentName": "content",
+            "modalName":"modal",
+           "getUserInfoURL":"json/Api_queryForObject_userInfo.json",
+           "getChannelListURL":"json/Open_queryForList_ChannelList.json",
+           "logoutURL":"logout.jsp"
+	}
+}

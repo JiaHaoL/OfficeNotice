@@ -56,7 +56,19 @@
 			AND DOCCHANNEL = #{DOCCHANNEL}
 		</if>
 		<if test="DOCAUTHORMORE != null and DOCAUTHORMORE != ''">
-			AND DOCAUTHOR in (#{DOCAUTHORMORE})
+			AND ( DOCTITLE like  '%' || '[' || #{DOCAUTHORMORE} || '%' or  DOCTITLE like  '%' || #{DOCAUTHORMORE} || ']' || '%' )
+		</if>
+		<if test="XUEYESHUIPING != null and XUEYESHUIPING != ''">
+			AND ( DOCTITLE like  '%' ||  '学业水平］' || '%' or DOCTITLE like  '%' ||  '［学业水平' || '%')
+		</if>
+		<if test="ZHONGZHAO != null and ZHONGZHAO != ''">
+			AND (DOCTITLE like  '%' || '[中招' || '%' or DOCTITLE like  '%' || '[中、高招' || '%' or DOCTITLE like  '%' || '中招]' || '%')
+		</if>
+		<if test="GAOZHAO != null and GAOZHAO != ''">
+			AND (DOCTITLE like  '%' || '[高招' || '%' or DOCTITLE like  '%' || '[中、高招' || '%' or DOCTITLE like  '%' || '高招]' || '%')
+		</if>
+		<if test="KAOSHIELSE != null and KAOSHIELSE != ''">
+			AND docid not in (select docid from SC_DOCUMENT where regexp_like (DOCTITLE,'(［中招］|[中招]|[高招]|[中、高招]|[高中学业水平]|[学籍管理]|[学籍管理、中招]|[学籍管理、高招])') and DOCCHANNEL = #{DOCCHANNEL}) 	
 		</if>
 	 	ORDER BY  doczd desc,nvl(writetime, docreltime) DESC
   </select>
@@ -76,7 +88,19 @@
 			AND DOCCHANNEL = #{DOCCHANNEL}
 		</if>
  		<if test="DOCAUTHORMORE != null and DOCAUTHORMORE != ''">
-			AND DOCAUTHOR in (#{DOCAUTHORMORE})
+			AND ( DOCTITLE like  '%' || '[' || #{DOCAUTHORMORE} || '%' or  DOCTITLE like  '%' || #{DOCAUTHORMORE} || ']' || '%' )
+		</if>
+		<if test="XUEYESHUIPING != null and XUEYESHUIPING != ''">
+			AND ( DOCTITLE like  '%' ||  '学业水平］' || '%' or DOCTITLE like  '%' ||  '［学业水平' || '%')
+		</if>
+		<if test="ZHONGZHAO != null and ZHONGZHAO != ''">
+			AND (DOCTITLE like  '%' || '[中招' || '%' or DOCTITLE like  '%' || '[中、高招' || '%' or DOCTITLE like  '%' || '中招]' || '%')
+		</if>
+		<if test="GAOZHAO != null and GAOZHAO != ''">
+			AND (DOCTITLE like  '%' || '[高招' || '%' or DOCTITLE like  '%' || '[中、高招' || '%' or DOCTITLE like  '%' || '高招]' || '%')
+		</if>
+		<if test="KAOSHIELSE != null and KAOSHIELSE != ''">
+			AND docid not in (select docid from SC_DOCUMENT where regexp_like (DOCTITLE,'(［中招］|[中招]|[高招]|[中、高招]|[高中学业水平]|[学籍管理]|[学籍管理、中招]|[学籍管理、高招])') and DOCCHANNEL = #{DOCCHANNEL}) 	
 		</if>
 	</select>
 
