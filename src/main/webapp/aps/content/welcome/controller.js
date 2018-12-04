@@ -17,7 +17,7 @@
             	
             	$scope.find = function() {
             		if($scope.form.DOCCHANNEL == 2075){
-            			$scope.form.DOCAUTHOR = "区教育督导室";
+            			$scope.form.DOCAUTHOR = null;
             		}
             		
             		$scope.form.page = JSON.stringify($scope.page);
@@ -88,7 +88,6 @@
             		if(nodeVal == '最新通知' || nodeVal == '最新文件') {
             			$scope.form.DOCAUTHOR = null;
             		}else if(nodeVal== "区教育督导室" || nodeVal== "教育督导室" || nodeVal== "督导室"){
-            			//$scope.form.DOCAUTHORMORE = "'区教育督导室','教育督导室','督导室'";
             			$scope.form.DOCAUTHOR = "督导室";
             		}
             		if($scope.form.DOCCHANNEL == "1028"){
@@ -106,8 +105,9 @@
             				$scope.form.KAOSHIELSE = '1';
             			}
             			$scope.form.DOCAUTHORFORKAOSHI = nodeVal;
-            		}
-            		else{
+            		}else if(nodeVal == '最新通知' || nodeVal == '最新文件'){
+            			$scope.form.DOCAUTHOR = null;
+            		}else{
             			$scope.form.DOCAUTHOR = nodeVal;
             		}
             		

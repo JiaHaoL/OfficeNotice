@@ -16,7 +16,7 @@
 		select 
 			  DOCID,
 			  DOCCONTENT,
-			  DOCHTMLCON,
+			  replace(DOCHTMLCON,'/ewebeditor','http://cms3.sjedu.cn:8080/ewebeditor') DOCHTMLCON,
 			  DOCCODE,
 			  DOCCHANNEL,
 			  SITEID,
@@ -109,7 +109,7 @@
 		select 
 		  	  DOCID,
 			  DOCCONTENT,
-			  DOCHTMLCON,
+			  replace(DOCHTMLCON,'/ewebeditor','http://jyxy.sjedu.cn/ewebeditor') DOCHTMLCON,
 			  DOCCODE,
 			  DOCCHANNEL,
 			  (select CHNLNAME from SC_CHANNEL where CHANNELID=DOCCHANNEL) DOCCHANNELNAME,
